@@ -39,7 +39,7 @@
   <div class="alert alert-error">
     <p>Error loading products: {{ productsService.products.error() }}</p>
   </div>
-  } @else { @defer (when productsService.products.hasValue()) {
+  } @defer (when productsService.products.hasValue(); hydrate on viewport;) {
   <app-products-list [products]="productsService.products.value() || []" />
   } @placeholder {
   <div>Placeholder...</div>
@@ -47,5 +47,5 @@
   <app-loading-indicator />
   } @error {
   <p class="alert alert-error">Failed to load products component.</p>
-  } }
+  }
 </section>

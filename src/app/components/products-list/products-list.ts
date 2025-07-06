@@ -11,7 +11,8 @@ export class ProductsList {
 
   constructor() {
     afterNextRender(() => {
-      this.heavyComputation();
+      // this.heavyComputation();
+      console.log('first render complete');
     });
   }
 
