@@ -1,19 +1,19 @@
-import { afterNextRender, Component, input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { Product } from '../../interfaces';
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.html',
   styleUrl: './products-list.css',
+  imports: [],
+  standalone: true,
 })
 export class ProductsList {
   products = input.required<Product[]>();
+  loading = signal(true);
 
   constructor() {
-    afterNextRender(() => {
-      // this.heavyComputation();
-      console.log('first render complete');
-    });
+    this.heavyComputation();
   }
 
   private heavyComputation() {
@@ -25,9 +25,8 @@ export class ProductsList {
     }
     const endTime = performance.now();
     console.log(`Heavy computation finished in ${endTime - startTime} ms`);
+    this.loading.set(false);
   }
 
-  addToCart(product: Product) {
-    alert(`Product added to cart: ${product.name}`);
-  }
+
 }
