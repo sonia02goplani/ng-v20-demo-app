@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { afterNextRender, Component, input, signal } from '@angular/core';
 import { Product } from '../../interfaces';
 
 @Component({
@@ -13,7 +13,10 @@ export class ProductsList {
   loading = signal(true);
 
   constructor() {
-    this.heavyComputation();
+     this.heavyComputation(); // runs on server
+    // afterNextRender(() => {
+    //   this.heavyComputation(); // runs on browser
+    // });
   }
 
   private heavyComputation() {
