@@ -1,0 +1,17 @@
+<section class="container mx-auto grid gap-6">
+  @for (post of postsService.posts(); track post.id) {
+  <app-post [post]="post" />
+  }
+
+  @if (postsService.isLoading()) {
+  <app-loading-indicator />
+  }
+
+  @if (!postsService.hasMore() && postsService.posts().length) {
+  <div class="alert alert-info">
+    You have reached the end of the list.
+  </div>
+  }
+
+  <div #sentinel class="h-10"></div>
+</section>

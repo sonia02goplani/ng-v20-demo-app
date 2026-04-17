@@ -1,0 +1,14 @@
+<article class="card bg-base-100 shadow-md border border-base-200">
+  <div class="card-body gap-3">
+    <div class="flex items-start justify-between gap-4">
+      <h3 class="card-title text-lg">{{ post().title }}</h3>
+      <span class="badge badge-outline">#{{ post().id }}</span>
+    </div>
+    <p class="text-sm text-base-content/80">
+      {{ post().body }}
+    </p>
+    <div class="text-xs text-base-content/60">
+      Author: User {{ post().userId }}
+    </div>
+  </div>
+</article>
