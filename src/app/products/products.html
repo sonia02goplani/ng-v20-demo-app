@@ -43,11 +43,10 @@
     <p>Error loading products: {{ productsService.products.error() }}</p>
   </div>
   } @else if (productsService.products.hasValue()) {
-    <!-- blank defer means we are runnin  on idle -->
-    @defer (on viewport) {
-  <app-products-list [products]="productsService.products.value()" />
+  @defer (on viewport) {
+    <app-products-list [products]="productsService.products.value()" />
   } @placeholder {
-  <div class="container mx-auto my-6 h-20 rounded-box bg-base-200/50">Loading...</div>
-}
+    <app-loading-indicator />
   }
+}
 </section>
