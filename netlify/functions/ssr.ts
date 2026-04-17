@@ -1,15 +1,31 @@
-import type { Handler } from '@netlify/functions';
-import serverless from 'serverless-http';
+import { renderApplication } from '@angular/platform-server';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { App } from '../../src/app/app';
+import { appConfig } from '../../src/app/app.config';
 
-let cachedHandler: Handler | null = null;
-
-export const handler: Handler = async (event, context) => {
-  if (!cachedHandler) {
-    const { app } = await import(
-      '../../dist/ng-v20-demo-app/server/server.mjs'
+export async function handler(event: any) {
+  try {
+    const html = await renderApplication(
+      () => bootstrapApplication(App, appConfig), // ✅ FIX
+      {
+        document: '<app-root></app-root>',
+        url: event.rawUrl || event.path
+      }
     );
-    cachedHandler = serverless(app);
-  }
 
-  return cachedHandler(event, context);
-};
+    return {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'text/html'
+      },
+      body: html
+    };
+  } catch (error) {
+    console.error('SSR Error:', error);
+
+    return {
+      statusCode: 500,
+      body: 'SSR Error'
+    };
+  }
+}
