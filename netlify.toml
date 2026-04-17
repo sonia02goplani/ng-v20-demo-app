@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "dist/ng-v20-demo-app/browser"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/ssr"
+  status = 200

@@ -9,7 +9,10 @@ import { join } from 'node:path';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
-const app = express();
+export const app = express();
+// #region agent log
+fetch('http://127.0.0.1:7482/ingest/4d2e83d5-3578-46da-9ccc-cb7cf8a016fe',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f9f9e9'},body:JSON.stringify({sessionId:'f9f9e9',runId:'pre-fix',hypothesisId:'H5',location:'src/server.ts:12',message:'Server module initialized',data:{importMetaUrl:import.meta.url,dirname:import.meta.dirname,hasProcessCwd:!!process?.cwd},timestamp:Date.now()})}).catch(()=>{});
+// #endregion agent log
 const angularApp = new AngularNodeAppEngine();
 
 /**

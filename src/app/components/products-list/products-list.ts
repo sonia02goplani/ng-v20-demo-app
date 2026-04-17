@@ -27,6 +27,9 @@ export class ProductsList {
     console.log(`Heavy computation finished in ${endTime - startTime} ms`);
     this.loading.set(false);
   }
+  addToCart(product: Product) {
+    console.log(`Adding ${product.name} to cart`);
+  }
 
 
 }

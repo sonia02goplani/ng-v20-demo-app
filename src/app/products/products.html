@@ -39,7 +39,7 @@
   <div class="alert alert-error">
     <p>Error loading products: {{ productsService.products.error() }}</p>
   </div>
-  } @defer (when productsService.products.hasValue(); hydrate on viewport;) {
+  } @defer (on viewport) {
   <app-products-list [products]="productsService.products.value() || []" />
   } @placeholder {
   <div>Placeholder...</div>
