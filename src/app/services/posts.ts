@@ -8,7 +8,7 @@ const DEFAULT_PAGE_SIZE = 5;
 @Injectable({
   providedIn: 'root',
 })
-export class Posts {
+export class PostsService {
   private httpClient = inject(HttpClient);
   private postsSignal = signal<Post[]>([]);
   private isLoadingSignal = signal(false);

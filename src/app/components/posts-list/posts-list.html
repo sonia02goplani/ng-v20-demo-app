@@ -1,17 +1,27 @@
 <section class="container mx-auto grid gap-6">
-  @for (post of postsService.posts(); track post.id) {
-  <app-post [post]="post" />
+  @for (post of visiblePosts(); track post.id) {
+    <app-post [post]="post" />
   }
 
-  @if (postsService.isLoading()) {
-  <app-loading-indicator />
+  @if (postsService.isLoading() && postsService.posts().length > 0) {
+    <div class="flex justify-center py-4">
+      <app-loading-indicator />
+    </div>
   }
 
-  @if (!postsService.hasMore() && postsService.posts().length) {
-  <div class="alert alert-info">
-    You have reached the end of the list.
-  </div>
+  @if (showLoadMoreNav()) {
+    <div class="flex justify-center py-4">
+      <a class="btn btn-primary" routerLink="/create-skill">Load more</a>
+    </div>
   }
 
-  <div #sentinel class="h-10"></div>
+  @if (!isPreview() && !postsService.hasMore() && postsService.posts().length) {
+    <div class="alert alert-info">
+      You have reached the end of the list.
+    </div>
+  }
+
+  @if (!isPreview()) {
+    <div #sentinel class="h-10"></div>
+  }
 </section>

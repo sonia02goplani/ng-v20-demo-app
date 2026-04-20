@@ -10,19 +10,15 @@
 </h2>
 
 <section class="my-4">
-  @if (postsService.isLoading()) {
-  <app-loading-indicator />
-  } @else if (postsService.error()) {
-  <div class="alert alert-error">
-    <p>Error loading posts: {{ postsService.error() }}</p>
-  </div>
-  } @defer (on viewport) {
-  <app-posts-list />
-  } @placeholder {
-  <div>Placeholder...</div>
-  } @loading {
-  <app-loading-indicator />
-  } @error {
-  <p class="alert alert-error">Failed to load posts component.</p>
+  @if (postsService.error()) {
+    <div class="alert alert-error">
+      <p>Error loading posts: {{ postsService.error() }}</p>
+    </div>
+  } @else if (
+    postsService.isLoading() && postsService.posts().length === 0
+  ) {
+    <app-loading-indicator />
+  } @else {
+    <app-posts-list />
   }
 </section>

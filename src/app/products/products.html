@@ -39,7 +39,7 @@
   <div class="alert alert-error">
     <p>Error loading products: {{ productsService.products.error() }}</p>
   </div>
-  } @defer (on viewport) {
+  } @defer (when productsService.products.hasValue(); hydrate on viewport) {
   <app-products-list [products]="productsService.products.value() || []" />
   } @placeholder {
   <div>Placeholder...</div>
@@ -47,5 +47,32 @@
   <app-loading-indicator />
   } @error {
   <p class="alert alert-error">Failed to load products component.</p>
+  }
+</section>
+<section class="my-4">
+  <h2 class="text-2xl container mx-auto flex gap-4 items-center mb-4">
+    Posts (demo)
+    <span class="badge badge-secondary">{{
+      postsService.posts().length
+    }}</span>
+  </h2>
+  @if (postsService.isLoading()) {
+    <app-loading-indicator />
+  } @else if (postsService.error()) {
+    <div class="alert alert-error">
+      <p>Error loading posts: {{ postsService.error() }}</p>
+    </div>
+  } @else {
+    @defer (when !postsService.isLoading(); hydrate on viewport) {
+      <app-posts-list [previewMax]="5" />
+    } @placeholder {
+      <div class="min-h-24 flex items-center text-base-content/60">
+        Scroll the list into view to hydrate…
+      </div>
+    } @loading {
+      <app-loading-indicator />
+    } @error {
+      <p class="alert alert-error">Failed to load posts component.</p>
+    }
   }
 </section>

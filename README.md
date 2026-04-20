@@ -2,6 +2,10 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
 
+## Live demo
+
+Deployed on Netlify. Posts route (SSR / hydration demo): [https://ng-v20-demo.netlify.app/posts](https://ng-v20-demo.netlify.app/posts)
+
 ## Development server
 
 To start a local development server, run:

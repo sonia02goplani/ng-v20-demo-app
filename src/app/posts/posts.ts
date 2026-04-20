@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Posts as PostsService } from '../services/posts';
+import { PostsService } from '../services/posts';
 import { PostsList } from '../components/posts-list/posts-list';
 import { LoadingIndicator } from '../components/loading-indicator/loading-indicator';
 

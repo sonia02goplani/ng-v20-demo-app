@@ -14,4 +14,8 @@ export const routes: Routes = [
     path: 'posts',
     loadComponent: () => import('./posts/posts').then((m) => m.Posts),
   },
+  {
+    path: 'create-skill',
+    loadComponent: () => import('./posts/posts').then((m) => m.Posts),
+  },
 ];
