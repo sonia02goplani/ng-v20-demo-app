@@ -1,6 +1,25 @@
 <div class="hero bg-base-200 min-h-[calc(100vh-64px)]">
   <div class="hero-content text-center">
     <div class="max-w-md">
+      <div
+        class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-sky-700 ring-1 ring-sky-200/80"
+        aria-hidden="true"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="h-9 w-9"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 10.5V6a3.75 3.75 0 1 0 -7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974a1.125 1.125 0 0 1 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+          />
+        </svg>
+      </div>
       <h1 class="text-5xl font-bold">Hello there</h1>
       <p class="py-6">
         This is a simple product store built with Angular v20, demonstrating
@@ -13,10 +32,49 @@
         displayed once the data is available.
         <br />
       </p>
-      <button class="btn btn-primary">Get Started</button>
+      <button
+        type="button"
+        class="btn gap-2 border-0 bg-sky-200 font-medium text-sky-900 shadow-sm hover:bg-sky-300 active:bg-sky-400"
+      >
+        Get started
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="h-5 w-5"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+          />
+        </svg>
+      </button>
     </div>
   </div>
-  <p class="row-start-2">See our products 👇</p>
+  <p
+    class="row-start-2 flex items-center justify-center gap-2 text-base-content/80"
+  >
+    <span>See our products</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="h-5 w-5 text-sky-600"
+      aria-hidden="true"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+      />
+    </svg>
+  </p>
 </div>
 
 <h1 class="text-4xl font-bold text-center my-8">
@@ -29,7 +87,28 @@
     >{{ productsService.products.value()?.length || 0 }}</span
   >
   <div class="flex-1 flex justify-end">
-    <button #loadBtn class="btn btn-accent">Load products</button>
+    <button
+      #loadBtn
+      type="button"
+      class="btn gap-2 border-0 bg-sky-100 font-medium text-sky-900 shadow-sm hover:bg-sky-200 active:bg-sky-300"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-5 w-5"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+        />
+      </svg>
+      Load products
+    </button>
   </div>
 </h2>
 <section class="my-4">
